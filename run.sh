@@ -35,3 +35,9 @@ cd ./lisp
 sbcl=$(sbcl --script main.lisp)
 echo "lisp (sbcl): $sbcl passes"
 cd ..
+
+### java
+cd ./java
+java=$(javac Main.java && java Main)
+echo java: $java passes
+cd ..
