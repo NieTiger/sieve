@@ -4,45 +4,45 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> sieve(int size) {
+std::vector<unsigned int> sieve(unsigned int size) {
   if (size < 2)
     return {};
 
   std::vector<bool> a = std::vector<bool>(size);
-  int q = std::sqrt(size);
-  int factor = 3;
+  unsigned int q = std::sqrt(size);
+  unsigned int factor = 3;
 
   while (factor < q) {
-    for (int i = factor; i < size; i += 2) {
+    for (unsigned int i = factor; i < size; i += 2) {
       if (!a[i]) {
         factor = i;
         break;
       }
     }
 
-    for (int i = factor * 3; i < size; i += factor * 2) {
+    for (unsigned int i = factor * 3; i < size; i += factor * 2) {
       a[i] = true;
     }
 
     factor += 2;
   }
 
-  std::vector<int> res = {2};
-  for (int i = 3; i < size; i += 2) {
+  std::vector<unsigned int> res = {2};
+  for (unsigned int i = 3; i < size; i += 2) {
     if (!a[i])
       res.emplace_back(i);
   }
   return res;
 }
 
-std::vector<int> load_truth() {
+std::vector<unsigned int> load_truth() {
   std::ifstream s("../truth.txt");
-  std::vector<int> truth;
+  std::vector<unsigned int> truth;
   if (!s.is_open()) {
     std::cerr << "Failed to open truth file\n";
     exit(1);
   }
-  int curr;
+  unsigned int curr;
   while (s >> curr) {
     truth.emplace_back(curr);
   }
@@ -57,7 +57,7 @@ int main() {
     std::cerr << "Impl error\n";
     exit(1);
   }
-  for (int i = 0; i < truth.size(); i++) {
+  for (size_t i = 0; i < truth.size(); i++) {
     if (truth[i] != res[i]) {
       std::cerr << "Impl error\n";
       exit(1);
