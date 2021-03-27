@@ -23,3 +23,9 @@ cd ./go
 golang=$(go run *.go)
 echo golang: $golang passes
 cd ..
+
+### nodejs
+cd ./nodejs
+nodejs=$(node main.js)
+echo nodejs: $nodejs passes
+cd ..
