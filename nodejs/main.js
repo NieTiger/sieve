@@ -76,7 +76,7 @@ function main() {
     exitErr(1, "Impl incorrect");
   }
 
-  for (let i = 0; i < 10000; i += 1) {
+  for (let i = 0; i < truth.length; i += 1) {
     if (res[i] != truth[i]) {
       exitErr(1, "Impl incorrect");
     }
