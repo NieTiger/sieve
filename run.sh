@@ -38,6 +38,14 @@ cd ..
 
 ### java
 cd ./java
-java=$(javac Main.java && java Main)
+javac Main.java
+java=$(java Main)
 echo java: $java passes
+cd ..
+
+### cpp
+cd ./cpp
+make
+cpp=$(./sieve)
+echo cpp: $cpp passes
 cd ..
