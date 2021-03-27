@@ -1,5 +1,5 @@
 from typing import List
-import sieve
+import sievec as sieve
 
 
 def load_truth() -> List[int]:
