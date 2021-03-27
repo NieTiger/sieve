@@ -48,19 +48,6 @@ function loadTruth() {
   return truth;
 }
 
-function loadConfig() {
-  let config = null;
-  try {
-    // Read config
-    const data = fs.readFileSync("../config.json");
-    config = JSON.parse(data);
-  } catch (err) {
-    console.log(err);
-    process.exit(1);
-  }
-  return config;
-}
-
 function exitErr(n, ...msg) {
   console.log(msg);
   process.exit(n);
@@ -69,7 +56,6 @@ function exitErr(n, ...msg) {
 function main() {
   // Test impl
   const truth = loadTruth();
-  const config = loadConfig();
 
   let res = sieve(10000);
   if (truth.length != res.length) {
@@ -83,11 +69,14 @@ function main() {
   }
 
   // Benchmark
+  let duration_s = 5
+  let size = 10000
+
   let passes = 0
-  let duration_ms = config.duration_s * 1000
+  let duration_ms = duration_s * 1000
   let start = performance.now()
   while (performance.now() - start < duration_ms) {
-    sieve(config.size)
+    sieve(size)
     passes += 1
   }
 

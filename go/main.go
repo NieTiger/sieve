@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -28,27 +27,6 @@ func load_truth() []int {
 	return data
 }
 
-type Config struct {
-	Size       int
-	Duration_s int
-}
-
-func load_config() Config {
-	raw, err := ioutil.ReadFile("../config.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var config Config
-
-	err = json.Unmarshal(raw, &config)
-	if err != nil {
-		log.Fatal("json parse error: ", err)
-	}
-
-	return config
-}
-
 func main() {
 	// Test implementation
 	truth := load_truth()
@@ -64,8 +42,8 @@ func main() {
 	}
 
 	// Bench
-	config := load_config()
-	duration_ns := time.Duration(config.Duration_s * 1000000000)
+	duration_s := 5
+	duration_ns := time.Duration(duration_s * 1000000000)
 	size := 10000
 
 	start := time.Now()
