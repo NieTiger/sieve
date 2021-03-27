@@ -30,8 +30,8 @@ nodejs=$(node main.js)
 echo nodejs: $nodejs passes
 cd ..
 
-### clisp
-cd ./clisp
+### lisp
+cd ./lisp
 sbcl=$(sbcl --script main.lisp)
-echo "clisp (sbcl): $sbcl passes"
+echo "lisp (sbcl): $sbcl passes"
 cd ..
