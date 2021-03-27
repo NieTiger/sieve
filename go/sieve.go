@@ -15,7 +15,7 @@ func Sieve(size int) []int {
 
 	for factor < q {
 		for i := factor; i < size; i += 2 {
-			if !a[factor] {
+			if !a[i] {
 				factor = i
 				break
 			}
