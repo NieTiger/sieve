@@ -18,7 +18,7 @@ echo cython3: $cython3 passes
 
 cd ..
 
-# golang
+### golang
 cd ./go
 golang=$(go run *.go)
 echo golang: $golang passes
