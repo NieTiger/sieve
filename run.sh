@@ -29,3 +29,9 @@ cd ./nodejs
 nodejs=$(node main.js)
 echo nodejs: $nodejs passes
 cd ..
+
+### clisp
+cd ./clisp
+sbcl=$(sbcl --script main.lisp)
+echo "clisp (sbcl): $sbcl passes"
+cd ..
