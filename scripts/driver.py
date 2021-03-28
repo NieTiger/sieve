@@ -20,11 +20,13 @@ class Result(NamedTuple):
     version: str
     passes: int
 
+
 def plot_results(results):
     _, ax = plt.subplots(figsize=(8, 6))
     ax.bar([r.lang for r in results], [r.passes for r in results])
     ax.set_title("Sieve bench")
-    plt.savefig("plot.png")
+    ax.set_ylabel("# passes in 5 seconds")
+    plt.savefig("docs/plot1.png")
     plt.show()
 
 

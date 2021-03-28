@@ -1,0 +1,28 @@
+name: Run Bench
+on: push
+
+jobs:
+  bench:
+    name: Run bench
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          cat ./scripts/install_dependencies.sh
+          ./scripts/install_dependencies.sh
+
+      - name: Bench
+        run: python3 ./scripts/driver.py
+
+      - name: Generate GH pages
+        run: ./scripts/build_docs.sh
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
