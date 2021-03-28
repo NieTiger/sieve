@@ -2,5 +2,5 @@ site_name: Sieve Bench
 site_description: A biased and unscientific language performance benchmark for fun
 theme:
   name: material
-repo_name: nietiger/sieve
-repo_url: https://github.com/nietiger/sieve
+repo_name: kwsp/sieve
+repo_url: https://github.com/kwsp/sieve

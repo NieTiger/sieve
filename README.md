@@ -1,8 +1,8 @@
 # Sieve Bench
 
-_A biased and unscientific language performance benchmark for fun_
+## _A biased and unscientific language performance benchmark for fun_
 
-The idea is to implement the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) in a bunch of different languages (using only the standard library, without concurrency or parallelism) and measure the number of passes each sieve can run for `size = 10000` in 5 seconds. This repo runs all implementations automatically in CI (Github Actions) and generates the plot below.
+The [idea](https://www.youtube.com/watch?v=D3h62rgewZM) is to implement the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) in a bunch of different languages (using only the standard library, without concurrency or parallelism) and measure the number of passes each sieve can run for `size = 10000` in 5 seconds. This repo runs all implementations automatically in CI (Github Actions) and generates the plot below.
 
 ![plot](./plot1.png)
 
@@ -14,7 +14,7 @@ For a new language implementation:
 
 ### 1. Create a new directory in the root of the repo with the name of the language (e.g. `rust`) and place your source code inside.
 
-- The source code must check the implementation against the [truth file](https://github.com/NieTiger/sieve/blob/main/truth.txt).
+- The source code must check the implementation against the [truth file](https://github.com/kwsp/sieve/blob/main/truth.txt).
 - `sieve(10000)` should be executed as many times as possible within 5 seconds in a timer loop.
 - The only output to your program should be the number of passes `sieve(10000)` ran for.
 
