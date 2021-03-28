@@ -133,13 +133,13 @@
     
       <div class="md-header__source">
         
-<a href="https://github.com/nietiger/sieve/" title="Go to repository" class="md-source" data-md-component="source">
+<a href="https://github.com/kwsp/sieve/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    nietiger/sieve
+    kwsp/sieve
   </div>
 </a>
       </div>
@@ -176,13 +176,13 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/nietiger/sieve/" title="Go to repository" class="md-source" data-md-component="source">
+<a href="https://github.com/kwsp/sieve/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    nietiger/sieve
+    kwsp/sieve
   </div>
 </a>
     </div>
@@ -226,6 +226,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-biased-and-unscientific-language-performance-benchmark-for-fun" class="md-nav__link">
+    A biased and unscientific language performance benchmark for fun
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#contribute" class="md-nav__link">
@@ -294,6 +301,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#a-biased-and-unscientific-language-performance-benchmark-for-fun" class="md-nav__link">
+    A biased and unscientific language performance benchmark for fun
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#contribute" class="md-nav__link">
     Contribute
   </a>
@@ -339,21 +353,21 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/nietiger/sieve/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/kwsp/sieve/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
                 <h1 id="sieve-bench">Sieve Bench</h1>
-<p><em>A biased and unscientific language performance benchmark for fun</em></p>
-<p>The idea is to implement the <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> in a bunch of different languages (using only the standard library, without concurrency or parallelism) and measure the number of passes each sieve can run for <code>size = 10000</code> in 5 seconds. This repo runs all implementations automatically in CI (Github Actions) and generates the plot below.</p>
+<h2 id="a-biased-and-unscientific-language-performance-benchmark-for-fun"><em>A biased and unscientific language performance benchmark for fun</em></h2>
+<p>The <a href="https://www.youtube.com/watch?v=D3h62rgewZM">idea</a> is to implement the <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> in a bunch of different languages (using only the standard library, without concurrency or parallelism) and measure the number of passes each sieve can run for <code>size = 10000</code> in 5 seconds. This repo runs all implementations automatically in CI (Github Actions) and generates the plot below.</p>
 <p><img alt="plot" src="plot1.png" /></p>
 <h2 id="contribute">Contribute</h2>
 <p>You're welcome to contribute an implementation for a new language or improve an existing implementation (my implementations are probably whack :P). The function <code>sieve</code> should take argument <code>size</code> of type <code>int</code> and returns a list of all prime numbers up to (and not including) size.</p>
 <p>For a new language implementation:</p>
 <h3 id="1-create-a-new-directory-in-the-root-of-the-repo-with-the-name-of-the-language-eg-rust-and-place-your-source-code-inside">1. Create a new directory in the root of the repo with the name of the language (e.g. <code>rust</code>) and place your source code inside.</h3>
 <ul>
-<li>The source code must check the implementation against the <a href="https://github.com/NieTiger/sieve/blob/main/truth.txt">truth file</a>.</li>
+<li>The source code must check the implementation against the <a href="https://github.com/kwsp/sieve/blob/main/truth.txt">truth file</a>.</li>
 <li><code>sieve(10000)</code> should be executed as many times as possible within 5 seconds in a timer loop.</li>
 <li>The only output to your program should be the number of passes <code>sieve(10000)</code> ran for.</li>
 </ul>
