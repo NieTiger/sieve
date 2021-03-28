@@ -1,4 +1,5 @@
 #!/bin/bash
+uname=$(uname -a)
 
 ### python
 cd py3
