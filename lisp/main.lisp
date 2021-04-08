@@ -28,7 +28,7 @@
        (passes 0 (1+ passes)))
       ((> (- (get-internal-real-time) start) internal-duration)
        passes)
-      (sieve 10000)))
+      (sieve 1000000)))
 
 (write (bench))
 (terpri)

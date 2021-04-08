@@ -11,15 +11,13 @@ def load_truth() -> List[int]:
 
 
 if __name__ == "__main__":
-    assert sieve.sieve(10000) == load_truth(), "implementation incorrect"
+    size = 1000000
+    assert sieve.sieve(size) == load_truth(), "implementation incorrect"
 
     import timeit
 
     duration_s = 5
-    size = 10000
-
     start = timeit.default_timer()
-    n_seconds = 5
     n_passes = 0
     while timeit.default_timer() - start < duration_s:
         sieve.sieve(size)

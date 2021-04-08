@@ -57,8 +57,10 @@ public class Main {
   }
 
   public static void main(String[] args) {
+    int size = 1000000;
+
     // Test impl
-    Integer[] res = Main.sieve(10000);
+    Integer[] res = Main.sieve(size);
     Integer[] truth = Main.load_truth();
 
     if (truth.length != res.length) {
@@ -78,7 +80,7 @@ public class Main {
     long start = System.currentTimeMillis();
     int passes = 0;
     while (System.currentTimeMillis() - start < duration_ms) {
-      Main.sieve(10000);
+      Main.sieve(size);
       passes += 1;
     }
     System.out.println(passes);

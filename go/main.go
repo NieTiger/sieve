@@ -28,9 +28,11 @@ func load_truth() []int {
 }
 
 func main() {
+	size := 1000000
+
 	// Test implementation
 	truth := load_truth()
-	res := Sieve(10000)
+	res := Sieve(size)
 	if len(res) != len(truth) {
 		log.Fatal("Implementation error")
 	}
@@ -44,7 +46,6 @@ func main() {
 	// Bench
 	duration_s := 5
 	duration_ns := time.Duration(duration_s * 1000000000)
-	size := 10000
 
 	start := time.Now()
 	n_passes := 0

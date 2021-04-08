@@ -50,16 +50,21 @@ std::vector<unsigned int> load_truth() {
 }
 
 int main() {
+  int size = 1000000;
+
   // Test impl
   auto truth = load_truth();
-  auto res = sieve(10000);
+  auto res = sieve(size);
   if (truth.size() != res.size()) {
     std::cerr << "Impl error\n";
-    exit(1);
+    std::cerr << "Truth size: " << truth.size() << ", res size: " << res.size()
+              << std::endl;
   }
   for (size_t i = 0; i < truth.size(); i++) {
     if (truth[i] != res[i]) {
       std::cerr << "Impl error\n";
+      std::cerr << "truth[" << i << "]=" << truth[i] << ", res[" << i
+                << "]=" << res[i] << std::endl;
       exit(1);
     }
   }
@@ -69,7 +74,7 @@ int main() {
   auto duration = std::chrono::seconds(5);
   int passes = 0;
   while (std::chrono::steady_clock::now() - start < duration) {
-    sieve(10000);
+    sieve(size);
     passes++;
   }
   std::cout << passes << std::endl;

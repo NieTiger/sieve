@@ -1,13 +1,13 @@
 const fs = require("fs");
-const { performance } = require('perf_hooks');
+const { performance } = require("perf_hooks");
 
 function sieve(size) {
   if (size < 2) {
     return [];
   }
 
-  let a = new Int8Array(size);
-  let q = Math.sqrt(size);
+  const a = new Int8Array(size);
+  const q = Math.sqrt(size);
   let factor = 3;
 
   while (factor < q) {
@@ -25,7 +25,7 @@ function sieve(size) {
     factor += 2;
   }
 
-  let res = [2];
+  const res = [2];
   for (let i = 3; i < size; i += 2) {
     if (a[i] == 0) {
       res.push(i);
@@ -54,33 +54,34 @@ function exitErr(n, ...msg) {
 }
 
 function main() {
+  const size = 1000000;
+
   // Test impl
   const truth = loadTruth();
 
-  let res = sieve(10000);
+  const res = sieve(size);
   if (truth.length != res.length) {
-    exitErr(1, "Impl incorrect");
+    console.log("truth size: ", truth.length, " res size: ", res.length);
   }
 
   for (let i = 0; i < truth.length; i += 1) {
     if (res[i] != truth[i]) {
+      console.log(`truth[${i}]=${truth[i]}, res[${i}]=${res[i]}`);
       exitErr(1, "Impl incorrect");
     }
   }
 
   // Benchmark
-  let duration_s = 5
-  let size = 10000
-
-  let passes = 0
-  let duration_ms = duration_s * 1000
-  let start = performance.now()
+  const duration_s = 5;
+  const duration_ms = duration_s * 1000;
+  const start = performance.now();
+  let passes = 0;
   while (performance.now() - start < duration_ms) {
-    sieve(size)
-    passes += 1
+    sieve(size);
+    passes += 1;
   }
 
-  console.log(passes)
+  console.log(passes);
 }
 
 main();
