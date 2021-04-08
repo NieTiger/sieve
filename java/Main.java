@@ -20,7 +20,7 @@ public class Main {
         }
       }
 
-      for (int i = factor * 3; i < size; i += factor * 2) {
+      for (int i = factor * factor; i < size; i += factor * 2) {
         a[i] = true;
       }
 

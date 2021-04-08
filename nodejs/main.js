@@ -18,7 +18,7 @@ function sieve(size) {
       }
     }
 
-    for (let i = factor * 3; i < size; i += factor * 2) {
+    for (let i = factor * factor; i < size; i += factor * 2) {
       a[i] = 1;
     }
 

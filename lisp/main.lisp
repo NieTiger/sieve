@@ -13,7 +13,7 @@
                         ((or (zerop (aref a i)) (>= i size))
                          (if (< i size) i factor))))
 
-              (do ((i (* factor 3) (+ i (* factor 2))))
+              (do ((i (* factor factor) (+ i (* factor 2))))
                   ((>= i size) nil)
                   (setf (aref a i) 1))))
 

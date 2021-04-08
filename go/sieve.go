@@ -21,7 +21,7 @@ func Sieve(size int) []int {
 			}
 		}
 
-		for i := factor * 3; i < size; i += factor * 2 {
+		for i := factor * factor; i < size; i += factor * 2 {
 			a[i] = true
 		}
 

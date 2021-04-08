@@ -19,7 +19,7 @@ def sieve(size: int) -> List[int]:
                 break
 
         # remove all multiples of this prime
-        for num in range(factor * 3, size, factor * 2):
+        for num in range(factor * factor, size, factor * 2):
             a[num] = 1
 
         factor += 2

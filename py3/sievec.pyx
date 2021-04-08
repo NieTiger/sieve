@@ -38,7 +38,7 @@ def sieve(int size):
                 break
 
         # remove all multiples of this prime
-        i = factor * 3
+        i = factor * factor
         incr = factor * 2
         while i < size:
             a[i] = 1

@@ -20,9 +20,8 @@ std::vector<unsigned int> sieve(unsigned int size) {
       }
     }
 
-    for (unsigned int i = factor * 3; i < size; i += factor * 2) {
+    for (unsigned int i = factor * factor; i < size; i += factor * 2)
       a[i] = true;
-    }
 
     factor += 2;
   }
