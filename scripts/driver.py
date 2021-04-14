@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from typing import List, NamedTuple
 from pathlib import Path
 import os
@@ -19,15 +20,35 @@ class Result(NamedTuple):
     lang: str
     version: str
     passes: int
+    raw_output: str
 
 
-def plot_results(results):
-    _, ax = plt.subplots(figsize=(8, 6))
-    ax.bar([r.lang for r in results], [r.passes for r in results])
-    ax.set_title("Sieve bench")
-    ax.set_ylabel("# passes in 5 seconds")
-    plt.savefig("docs/plot1.png")
-    plt.show()
+def plot_results(results, title="Sieve bench"):
+    results.sort(key=lambda v: v.passes)
+
+    with plt.xkcd():
+
+        fig = plt.figure()
+        ax = fig.add_axes((0.2, 0.2, 0.7, 0.7))
+
+        ax.barh([r.lang for r in results], [r.passes for r in results])
+
+        ax.set_title(title)
+        ax.set_ylabel("# passes in 5 seconds")
+
+        plt.savefig("docs/plot1.png")
+
+        plt.show()
+
+results_tmpl = r"""
+# Raw Results
+
+![plot](./plot1.png)
+
+```
+{}
+```
+"""
 
 
 def main():
@@ -44,11 +65,19 @@ def main():
         for r in res.split("\n\n"):
             print(r, end="\n\n")
             passes, lang, version = r.split("\n", maxsplit=2)
-            results.append(Result(passes=int(passes), lang=lang, version=version))
+            results.append(Result(passes=int(passes), lang=lang, version=version, raw_output=res))
 
     results.sort(key=lambda x: x.passes, reverse=True)
     with open("results.pkl", "wb") as fp:
         pickle.dump(results, fp)
+
+    results_str = "\n\n".join([result.raw_output for result in results])
+    results_str = "\n\n".join((uname, results_str))
+
+    with open("docs/results.md", "w") as fp:
+        tmp = results_tmpl.format(results_str)
+        fp.write(tmp)
+
     plot_results(results)
 
 
