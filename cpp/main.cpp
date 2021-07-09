@@ -36,7 +36,7 @@ std::vector<unsigned int> sieve(unsigned int size) {
 }
 
 std::vector<unsigned int> load_truth() {
-  std::ifstream s("../truth.txt");
+  std::ifstream s("./truth.txt");
   std::vector<unsigned int> truth;
   if (!s.is_open()) {
     std::cerr << "Failed to open truth file\n";
