@@ -1,6 +1,6 @@
-from typing import List, NamedTuple
+from typing import List
 
-import sieve
+from sieve import sieve
 
 
 def load_truth() -> List[int]:
@@ -10,9 +10,9 @@ def load_truth() -> List[int]:
     return [int(i) for i in data.split()]
 
 
-if __name__ == "__main__":
+def main():
     size = 1000000
-    assert sieve.sieve(size) == load_truth(), "implementation incorrect"
+    assert sieve(size) == load_truth(), "implementation incorrect"
 
     import timeit
 
@@ -20,7 +20,11 @@ if __name__ == "__main__":
     start = timeit.default_timer()
     n_passes = 0
     while timeit.default_timer() - start < duration_s:
-        sieve.sieve(size)
+        sieve(size)
         n_passes += 1
 
     print(n_passes)
+
+
+if __name__ == "__main__":
+    main()
