@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-from typing import List, NamedTuple
+from typing import NamedTuple
 from pathlib import Path
-import os
 import sys
 import pickle
 import shlex
@@ -15,7 +14,7 @@ def check_output(cmd: str, cwd=".") -> str:
         proc = subprocess.run(
             shlex.split(cmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd
         )
-    except FileNotFoundError:
+    except (FileNotFoundError, PermissionError):
         print("Error: '{}' failed to execute.".format(cmd), file=sys.stderr)
         return ""
     else:
