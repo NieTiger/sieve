@@ -61,8 +61,5 @@ var counter = 0
 while (clock() - start_t) < target_td {
     _ = sieve(1000000)
     counter += 1
-    if truth != res {
-        throw SieveError.AlgorithmIncorrect
-    }
 }
 print(counter)

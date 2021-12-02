@@ -49,32 +49,36 @@ std::vector<unsigned int> load_truth() {
   return truth;
 }
 
+void validate(std::vector<unsigned int> a1, std::vector<unsigned int> a2) {
+  if (a1.size() != a2.size()) {
+    std::cerr << "Impl error\n";
+    std::cerr << "a1 size: " << a1.size() << ", a2 size: " << a2.size()
+              << std::endl;
+  }
+  for (size_t i = 0; i < a1.size(); i++) {
+    if (a1[i] != a2[i]) {
+      std::cerr << "Impl error\n";
+      std::cerr << "a1[" << i << "]=" << a1[i] << ", a2[" << i
+                << "]=" << a2[i] << std::endl;
+      exit(1);
+    }
+  }
+}
+
 int main() {
   int size = 1000000;
 
   // Test impl
   auto truth = load_truth();
   auto res = sieve(size);
-  if (truth.size() != res.size()) {
-    std::cerr << "Impl error\n";
-    std::cerr << "Truth size: " << truth.size() << ", res size: " << res.size()
-              << std::endl;
-  }
-  for (size_t i = 0; i < truth.size(); i++) {
-    if (truth[i] != res[i]) {
-      std::cerr << "Impl error\n";
-      std::cerr << "truth[" << i << "]=" << truth[i] << ", res[" << i
-                << "]=" << res[i] << std::endl;
-      exit(1);
-    }
-  }
+  validate(truth, res);
 
   // Bench
   auto start = std::chrono::steady_clock::now();
   auto duration = std::chrono::seconds(5);
   int passes = 0;
   while (std::chrono::steady_clock::now() - start < duration) {
-    sieve(size);
+    res = sieve(size);
     passes++;
   }
   std::cout << passes << std::endl;
