@@ -72,10 +72,13 @@ def main():
         res = check_output("./run.sh", cwd=dir).strip()
         for r in res.split("\n\n"):
             print(r, end="\n\n")
-            passes, lang, version = r.split("\n", maxsplit=2)
-            results.append(
-                Result(passes=int(passes), lang=lang, version=version, raw_output=res)
-            )
+            try:
+                passes, lang, version = r.split("\n", maxsplit=2)
+                results.append(
+                    Result(passes=int(passes), lang=lang, version=version, raw_output=res)
+                )
+            except Exception as e:
+                print("Failed to parse: ", r)
 
     results.sort(key=lambda x: x.passes, reverse=True)
     with open("results.pkl", "wb") as fp:
