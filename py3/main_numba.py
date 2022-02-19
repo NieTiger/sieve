@@ -2,15 +2,17 @@ from typing import List
 import math
 
 from numba import jit
+import numpy as np
 
 
 @jit()
 def sieve(size: int) -> List[int]:
     if size < 2:
-        return []
+        return [np.int64(i) for i in range(0)]
 
     # keep track of odd values only (don't look at even indices)
-    a = bytearray(size)
+    # a = bytearray(size)
+    a = np.zeros(size, dtype=np.uint8)
     q = math.sqrt(size)
     factor = 3
 
