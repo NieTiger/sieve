@@ -7,7 +7,7 @@ echo
 
 # CPython3 + Numba
 python3 main_numba.py
-echo CPython3 + Numba
+echo Py3/Numba
 python3 --version
 python3 -c "import numba; print('Numba', numba.__version__)"
 echo
