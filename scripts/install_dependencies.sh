@@ -13,5 +13,5 @@ pushd ~/emsdk
 
 # swift
 wget -q https://download.swift.org/swift-5.5.1-release/ubuntu2004/swift-5.5.1-RELEASE/swift-5.5.1-RELEASE-ubuntu20.04.tar.gz
-tar -xvzf swift-5.5.1-RELEASE-ubuntu20.04.tar.gz -C ~
+tar -xzf swift-5.5.1-RELEASE-ubuntu20.04.tar.gz -C ~
 echo "PATH=~/swift-5.5.1-RELEASE-ubuntu20.04/usr/bin:$PATH" >> ~/.bashrc
