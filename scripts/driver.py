@@ -8,6 +8,8 @@ import subprocess
 
 import matplotlib.pyplot as plt
 
+def _print(*args, **kwargs):
+    print("[Driver]", *args, **kwargs)
 
 def check_output(cmd: str, cwd=".") -> str:
     try:
@@ -78,7 +80,7 @@ def main():
                     Result(passes=int(passes), lang=lang, version=version, raw_output=res)
                 )
             except Exception as e:
-                print("Failed to parse: ", r)
+                _print("Failed to parse: ", r, end="\n\n")
 
     results.sort(key=lambda x: x.passes, reverse=True)
     with open("results.pkl", "wb") as fp:
