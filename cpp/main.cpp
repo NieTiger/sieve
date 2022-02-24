@@ -8,29 +8,28 @@ std::vector<unsigned int> sieve(unsigned int size) {
   if (size < 2)
     return {};
 
-  std::vector<bool> a = std::vector<bool>(size);
+  auto a = std::vector<unsigned int>(size);
   unsigned int q = std::sqrt(size);
   unsigned int factor = 3;
 
   while (factor < q) {
-    for (unsigned int i = factor; i < size; i += 2) {
+    for (auto i = factor; i < size; i += 2) {
       if (!a[i]) {
         factor = i;
         break;
       }
     }
 
-    for (unsigned int i = factor * factor; i < size; i += factor * 2)
-      a[i] = true;
+    for (auto i = factor * factor; i < size; i += factor * 2)
+      a[i] = 1;
 
     factor += 2;
   }
 
   std::vector<unsigned int> res = {2};
-  res.reserve(size / 7);
-  for (unsigned int i = 3; i < size; i += 2) {
+  for (auto i = 3; i < size; i += 2) {
     if (!a[i])
-      res.emplace_back(i);
+      res.push_back(i);
   }
   return res;
 }
