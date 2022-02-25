@@ -13,21 +13,21 @@ std::vector<unsigned int> sieve(unsigned int size) {
   unsigned int factor = 3;
 
   while (factor < q) {
-    for (auto i = factor; i < size; i += 2) {
+    for (unsigned int i = factor; i < size; i += 2) {
       if (!a[i]) {
         factor = i;
         break;
       }
     }
 
-    for (auto i = factor * factor; i < size; i += factor * 2)
+    for (unsigned int i = factor * factor; i < size; i += factor * 2)
       a[i] = 1;
 
     factor += 2;
   }
 
   std::vector<unsigned int> res = {2};
-  for (auto i = 3; i < size; i += 2) {
+  for (unsigned int i = 3; i < size; i += 2) {
     if (!a[i])
       res.push_back(i);
   }
