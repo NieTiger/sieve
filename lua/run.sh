@@ -1,3 +1,3 @@
-lua main.lua
-echo Lua
-lua -v
+luajit main.lua
+echo LuaJIT
+luajit -v

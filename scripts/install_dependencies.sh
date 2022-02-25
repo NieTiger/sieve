@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update -yq
-sudo apt-get install -yq python3 python3-pip pypy3 golang nodejs openjdk-11-jdk sbcl lua5.4
+sudo apt-get install -yq python3 python3-pip pypy3 golang nodejs openjdk-11-jdk sbcl luajit
 sudo apt-get install -yq binutils git gnupg2 libc6-dev libcurl4 libedit2 libgcc-9-dev libpython2.7 libsqlite3-0 libstdc++-9-dev libxml2 libz3-dev pkg-config tzdata zlib1g-dev
 python3 -m pip install numba cython matplotlib mkdocs-material
 python3 -m pip install --upgrade pip
