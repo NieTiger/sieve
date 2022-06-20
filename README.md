@@ -4,7 +4,7 @@
 
 The [idea](https://www.youtube.com/watch?v=D3h62rgewZM) is to implement the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) in a bunch of different languages (using only the standard library, without concurrency or parallelism) and measure the number of passes each sieve can run for `size = 1000000` in 5 seconds. This repo runs all implementations automatically in CI (Github Actions) and generates the plot below.
 
-![plot](./plot1.png)
+![View this plot at https://kwsp.github.io/sieve/](./plot1.png)
 
 ## Contribute
 
