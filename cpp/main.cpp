@@ -11,7 +11,8 @@ std::vector<unsigned int> sieve(unsigned int size) {
 
     // because all prime numbers (except 2) must be odd, we can bit-shift all numbers to the right by 1
     // and reduce our memory usage by half
-    auto a = std::vector<unsigned int>(size >> 1);
+    const auto size_2 = size >> 1;
+    auto a = std::vector<unsigned int>(size_2);
     const unsigned int q = std::sqrt(size);
     unsigned int factor = 3;
 

@@ -1,6 +1,6 @@
 #!/bin/bash
-cmake -B build
-cmake --build build -j
+cmake -B build | tail -n +90
+cmake --build build -j | tail -n +90
 ./build/sieve
 echo C++
 g++ --version
