@@ -1,6 +1,6 @@
 #!/bin/bash
 
-make 2>&1 1>/dev/null
+make >/dev/null 2>&1
 python3 main.py
 echo Py3/Cython
 python3 -c "import Cython; print('Cython', Cython.__version__)"
