@@ -1,7 +1,7 @@
-function sieve(size)
+function Sieve(size)
   if size < 2 then return {} end
 
-  local a, q, factor = {}, math.sqrt(size), 3
+  local a, q, factor = {}, math.floor(math.sqrt(size)), 3
 
   while factor < q do
     for num=factor,size,2 do
@@ -23,7 +23,7 @@ function sieve(size)
   return res
 end
 
-function load_truth()
+function Load_truth()
   local truth = {}
   local raw = io.open("../truth.txt", "r"):read("*a")
   for v in string.gmatch(raw, "%S+") do
@@ -32,7 +32,7 @@ function load_truth()
   return truth
 end
 
-function cmp_tbl(t1, t2)
+function Cmp_tbl(t1, t2)
   if #t1 ~= #t2 then return false end
   for i=1,#t1 do
     if t1[i] ~= t2[i] then return false end
@@ -40,10 +40,10 @@ function cmp_tbl(t1, t2)
   return true
 end
 
-function main()
-  local res = sieve(1000000) 
-  local truth = load_truth()
-  if not cmp_tbl(res, truth) then
+function Main()
+  local res = Sieve(1000000) 
+  local truth = Load_truth()
+  if not Cmp_tbl(res, truth) then
     warn("Impl error.")
     return
   end
@@ -52,10 +52,10 @@ function main()
   local _end = os.clock() + 5
   local counter = 0
   while os.clock() < _end do
-    sieve(1000000)
+    Sieve(1000000)
     counter = counter + 1
   end
   print(counter)
 end
 
-main()
+Main()
