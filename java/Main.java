@@ -8,20 +8,20 @@ public class Main {
       return new Integer[0];
     }
 
-    boolean[] a = new boolean[size];
+    boolean[] a = new boolean[size/2];
     int q = (int) Math.sqrt(size);
     int factor = 3;
 
     while (factor < q) {
       for (int i = factor; i < size; i += 2) {
-        if (!a[i]) {
+        if (!a[i>>1]) {
           factor = i;
           break;
         }
       }
 
       for (int i = factor * factor; i < size; i += factor * 2) {
-        a[i] = true;
+        a[i>>1] = true;
       }
 
       factor += 2;
@@ -31,7 +31,7 @@ public class Main {
     res.add(2);
 
     for (int i = 3; i < size; i += 2) {
-      if (!a[i]) {
+      if (!a[i>>1]) {
         res.add(i);
       }
     }

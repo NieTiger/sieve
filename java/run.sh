@@ -1,5 +1,4 @@
 #!/bin/bash
-javac Main.java
-java Main
+java Main.java
 echo Java
 java --version
