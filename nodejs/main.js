@@ -6,20 +6,20 @@ function sieve(size) {
     return [];
   }
 
-  const a = new Int8Array(size);
+  const a = new Int8Array(size >> 1);
   const q = Math.sqrt(size);
   let factor = 3;
 
   while (factor < q) {
     for (let i = factor; i < size; i += 2) {
-      if (a[i] == 0) {
+      if (a[i>>1] == 0) {
         factor = i;
         break;
       }
     }
 
     for (let i = factor * factor; i < size; i += factor * 2) {
-      a[i] = 1;
+      a[i>>1] = 1;
     }
 
     factor += 2;
@@ -27,7 +27,7 @@ function sieve(size) {
 
   const res = [2];
   for (let i = 3; i < size; i += 2) {
-    if (a[i] == 0) {
+    if (a[i>>1] == 0) {
       res.push(i);
     }
   }
