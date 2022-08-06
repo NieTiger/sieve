@@ -1,6 +1,7 @@
 #!/bin/bash
-make
-./sieve
+cmake -B build
+cmake --build build -j
+./build/sieve
 echo C++
 g++ --version
 
