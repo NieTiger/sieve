@@ -1,11 +1,11 @@
 #!/bin/bash
-cmake -B build | tail -n +90
-cmake --build build -j | tail -n +90
+cmake -B build >/dev/null 2>&1
+cmake --build build -j >/dev/null 2>&1
 ./build/sieve
 echo C++
 g++ --version
 
-source ~/emsdk/emsdk_env.sh > /dev/null
+source ~/emsdk/emsdk_env.sh >/dev/null 2>&1
 make wasm
 node sieve.js
 echo C++ wasm
