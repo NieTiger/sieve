@@ -24,4 +24,4 @@ def sieve(size: int) -> List[int]:
 
         factor += 2
 
-    return [2] + [i for i in range(3, len(a), 2) if a[i] == 0]
+    return [2] + [i for i in range(3, size, 2) if a[i] == 0]
