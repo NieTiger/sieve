@@ -23,5 +23,8 @@ wget -q https://download.swift.org/swift-5.6.2-release/ubuntu2004/swift-5.6.2-RE
 tar -xzf swift-5.6.2-RELEASE-ubuntu20.04.tar.gz -C ~
 echo "PATH=~/swift-5.6.2-RELEASE-ubuntu20.04/usr/bin:$PATH" >> ~/.bashrc
 
+# rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # build script and docs
 python3 -m pip install matplotlib mkdocs-material
