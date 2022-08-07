@@ -62,33 +62,35 @@ Code executed on GitHub Actions. Plot and raw results are below.
 
 
 def main():
+    head = "\n".join((check_output("date"), check_output("lsb_release -a"), check_output("uname -a")))
+    print(head)
+
     root = Path(".")
-    uname = "\n".join((check_output("lsb_release -a"), check_output("uname -a")))
-    print(uname)
-
     results = []
-    for dir in root.iterdir():
-        if not dir.is_dir() or not (dir / "run.sh").exists():
-            continue
+    # iterate over top level directories
+    for d in (d for d in root.iterdir() if d.is_dir()):
 
-        res = check_output("./run.sh", cwd=dir).strip()
-        for r in res.split("\n\n"):
-            print(r, end="\n\n")
+        # find all run scripts
+        run_scripts = d.glob("run*.sh")
+        for script in run_scripts:
+            res = check_output("./" + script.name, cwd=d).strip()
+            print(res, end="\n\n")
             try:
-                passes, lang, version = r.split("\n", maxsplit=2)
+                passes, lang, version = res.split("\n", maxsplit=2)
                 results.append(
                     Result(passes=int(passes), lang=lang, version=version, raw_output=res)
                 )
             except Exception as e:
-                _print("Failed to parse: ", r, end="\n\n")
-                _print(e)
+                _print("Failed to parse: ", res)
+                _print(e, end="\n\n")
 
     results.sort(key=lambda x: x.passes, reverse=True)
+
+    # pickle results
     with open("results.pkl", "wb") as fp:
         pickle.dump(results, fp)
 
-    results_str = "\n\n".join([result.raw_output for result in results])
-    results_str = "\n\n".join((uname, results_str))
+    results_str = "\n\n".join([head] + [result.raw_output for result in results])
 
     with open("docs/results.md", "w") as fp:
         tmp = results_tmpl.format(results_str)
