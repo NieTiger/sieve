@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 def _print(*args, **kwargs):
     print("[Driver]", *args, **kwargs)
 
-def check_output(cmd: str, cwd=".") -> str:
+def check_output(cmd: str, cwd=Path(".")) -> str:
     try:
         proc = subprocess.run(
             shlex.split(cmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd
@@ -81,6 +81,7 @@ def main():
                 )
             except Exception as e:
                 _print("Failed to parse: ", r, end="\n\n")
+                _print(e)
 
     results.sort(key=lambda x: x.passes, reverse=True)
     with open("results.pkl", "wb") as fp:
