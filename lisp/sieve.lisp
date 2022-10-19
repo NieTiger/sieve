@@ -1,7 +1,9 @@
 (defun sieve (size)
+  (declare (optimize (speed 3) (safety 0))
+           (type (unsigned-byte 64) size))
   (if (< size 2)
       '()
-      (let ((a (make-array size :element-type 'boolean :initial-element nil))
+      (let ((a (make-array size :element-type 'bit :initial-element 0))
             (res '(2)))
         (do ((q (floor (sqrt size)))
              (factor 3 (+ factor 2)))
@@ -10,15 +12,14 @@
             (progn 
               (setf factor 
                     (do ((i factor (+ i 2)))
-                        ((or (not (aref a i)) (>= i size))
+                        ((or (zerop (aref a i)) (>= i size))
                          i)))
 
               (do ((i (* factor factor) (+ i factor factor)))
                   ((>= i size) nil)
-                  (setf (aref a i) t))))
+                  (setf (aref a i) 1))))
 
         (do ((i 3 (+ i 2)))
             ((>= i size) (reverse res))
             (if (not (aref a i)) 
                 (setf res (cons i res)))))))
-
