@@ -6,14 +6,14 @@ import numpy as np
 
 
 @jit()
-def sieve(size: int) -> List[int]:
+def sieve(size: int):
     if size < 2:
         return [np.int64(i) for i in range(0)]
 
     # keep track of odd values only (don't look at even indices)
     # a = bytearray(size)
     a = np.zeros(size, dtype=np.uint8)
-    q = math.sqrt(size)
+    q = math.floor(math.sqrt(size))
     factor = 3
 
     while factor < q:
@@ -32,23 +32,22 @@ def sieve(size: int) -> List[int]:
     return [2] + [i for i in range(3, len(a), 2) if a[i] == 0]
 
 
-def load_truth() -> List[int]:
+def load_truth():
     with open("../truth.txt", "r") as fp:
         data = fp.read()
 
-    return [int(i) for i in data.split()]
+    return np.asarray([int(i) for i in data.split()])
 
 
 def main():
     size = 1000000
-    assert sieve(size) == load_truth(), "implementation incorrect"
+    assert np.allclose(sieve(size), load_truth()), "implementation incorrect"
 
     import timeit
 
-    duration_s = 5
-    start = timeit.default_timer()
+    end = timeit.default_timer() + 5
     n_passes = 0
-    while timeit.default_timer() - start < duration_s:
+    while timeit.default_timer() < end:
         sieve(size)
         n_passes += 1
 
