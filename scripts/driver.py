@@ -19,6 +19,9 @@ def check_output(cmd: str, cwd=Path(".")) -> str:
     except (FileNotFoundError, PermissionError):
         print("Error: '{}' failed to execute.".format(cmd), file=sys.stderr)
         return ""
+    except OSError as e:
+        breakpoint()
+        print("t")
     else:
         return proc.stdout.decode()
 
@@ -61,14 +64,16 @@ Code executed on GitHub Actions. Plot and raw results are below.
 """
 
 
-def main():
+def main(dirs=None):
     head = "\n".join((check_output("date"), check_output("lsb_release -a"), check_output("uname -a")))
     print(head)
 
     root = Path(".")
     results = []
     # iterate over top level directories
-    for d in (d for d in root.iterdir() if d.is_dir()):
+    if not dirs:
+        dirs = (d for d in root.iterdir() if d.is_dir())
+    for d in dirs:
 
         # find all run scripts
         run_scripts = d.glob("run*.sh")
@@ -100,4 +105,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 1:
+        dirs = [Path(p) for p in sys.argv[1].split(",")]
+        main(dirs)
+    else:
+        main()
