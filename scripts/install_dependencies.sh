@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# racket
+sudo add-apt-repository ppa:plt/racket
 sudo apt-get update -yq
 
 # Build tools for C++
@@ -25,6 +28,9 @@ echo "PATH=~/swift-5.6.2-RELEASE-ubuntu20.04/usr/bin:$PATH" >> ~/.bashrc
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# racket
+sudo apt-get install racket
 
 # build script and docs
 python3 -m pip install matplotlib mkdocs-material
