@@ -32,5 +32,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # racket
 sudo apt-get install racket
 
+# nim
+sudo apt-get install nim
+
 # build script and docs
 python3 -m pip install matplotlib mkdocs-material
